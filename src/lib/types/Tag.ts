@@ -9,6 +9,7 @@ export type TagFilterResult =
 	| number
 	| boolean
 	| User
+	| Function
 	| undefined
 	| null;
 

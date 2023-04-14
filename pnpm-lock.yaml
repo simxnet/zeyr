@@ -55,14 +55,17 @@ dependencies:
 
 devDependencies:
   '@sapphire/ts-config':
-    specifier: latest
-    version: 3.3.4
+    specifier: ^4.0.0
+    version: 4.0.0
   '@types/node':
     specifier: latest
     version: 18.15.11
   '@types/ws':
     specifier: ^8.5.4
     version: 8.5.4
+  colorette:
+    specifier: ^2.0.19
+    version: 2.0.19
   npm-run-all:
     specifier: ^4.1.5
     version: 4.1.5
@@ -75,6 +78,9 @@ devDependencies:
   tsc-watch:
     specifier: ^6.0.0
     version: 6.0.0(typescript@5.0.4)
+  tslib:
+    specifier: ^2.5.0
+    version: 2.5.0
   typescript:
     specifier: latest
     version: 5.0.4
@@ -398,12 +404,12 @@ packages:
     engines: {node: '>=v14.0.0', npm: '>=7.0.0'}
     dev: false
 
-  /@sapphire/ts-config@3.3.4:
-    resolution: {integrity: sha512-mWEUxCXh3cHKI7C8HJ049exVTMNaq+A/lJEDfM5ENSQ/OOZHd5DdmXn2jrYqFWbTRCHa0Vp2FAmACWBwePsBtg==}
+  /@sapphire/ts-config@4.0.0:
+    resolution: {integrity: sha512-0KH37vhrQwcaZIE1JMcEw+dapbHD+yDb5rmyKz4lHjua3D4j1qPDEzygFiPh7NdDM0O7HjKgozeo63jjCHfN2A==}
     engines: {node: '>=v16.0.0', npm: '>=8.0.0'}
     dependencies:
       tslib: 2.5.0
-      typescript: 4.9.5
+      typescript: 5.0.4
     dev: true
 
   /@sapphire/type@2.3.0:
@@ -555,7 +561,6 @@ packages:
 
   /colorette@2.0.19:
     resolution: {integrity: sha512-3tlv/dIP7FWvj3BsbHrGLJ6l/oKh1O3TcgBqMn+yyCagOxc23fyzDS6HypQbgxWbkpDnf52p1LuR4eWDQ/K9WQ==}
-    dev: false
 
   /concat-map@0.0.1:
     resolution: {integrity: sha512-/Srv4dswyQNBfohGpz9o6Yb3Gz3SrUDqBH5rTuhGR7ahtlbYKnVxw2bCFMRljaA7EXHaXZ8wsHdodFvbkhKmqg==}
@@ -1637,12 +1642,6 @@ packages:
       call-bind: 1.0.2
       for-each: 0.3.3
       is-typed-array: 1.1.10
-    dev: true
-
-  /typescript@4.9.5:
-    resolution: {integrity: sha512-1FXk9E2Hm+QzZQ7z+McJiHL4NW1F2EzMu9Nq9i3zAaGqibafqYwCVU6WyWAuyQRRzOlxou8xZSyXLEN8oKj24g==}
-    engines: {node: '>=4.2.0'}
-    hasBin: true
     dev: true
 
   /typescript@5.0.4:
