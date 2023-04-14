@@ -39,6 +39,7 @@ export function getTagFilters(args: Args): TagOptions {
 		// misc
 		prefix: container.client.options.defaultPrefix?.toString(),
 		ping: container.client.ws.ping,
+		args: () => args.rest("string").catch(() => "no"),
 
 		// images
 		'attachment.last': () =>

@@ -2,9 +2,20 @@ version: '3.9'
 
 services:
   zeyr:
+    depends_on:
+      - redis
     build:
       context: .
       target: development
     env_file: .env
     volumes:
       - ./:/opt/app
+  redis:
+    command: 'redis-server --port 8287 --requirepass redis'
+    container_name: redis
+    image: 'redis:alpine'
+    networks:
+      - zeyr
+    ports:
+      - '8287:8287'
+    restart: always
