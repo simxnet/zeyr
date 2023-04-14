@@ -1,8 +1,8 @@
-import { TagFilterResult } from '../types/Tag';
+import type { TagOptions } from '../types/Tag';
 
 export class TagParser {
-	filter: Record<string, TagFilterResult>;
-	constructor(filter: Record<string, TagFilterResult>) {
+	filter: TagOptions;
+	constructor(filter: TagOptions) {
 		this.filter = filter;
 	}
 

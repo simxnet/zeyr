@@ -1,11 +1,11 @@
-import { ApplyOptions } from '@sapphire/decorators';
-import { Subcommand } from '@sapphire/plugin-subcommands';
-import type { Message } from 'discord.js';
-import { TagParser } from '../../lib/tags/parser';
-import { TagLexer } from '../../lib/tags/lexer';
 import { getTagFilters } from '../../lib/tags/filter';
+import { TagLexer } from '../../lib/tags/lexer';
+import { TagParser } from '../../lib/tags/parser';
+import { ApplyOptions } from '@sapphire/decorators';
 import { Args } from '@sapphire/framework';
 import { send } from '@sapphire/plugin-editable-commands';
+import { Subcommand } from '@sapphire/plugin-subcommands';
+import type { Message } from 'discord.js';
 
 @ApplyOptions<Subcommand.Options>({
 	description: 'Tags commands',

@@ -1,7 +1,7 @@
+import type { TagOptions } from '../types/Tag';
 import { Args, container } from '@sapphire/framework';
-import { TagFilterResult } from '../types/Tag';
 
-export function getTagFilters(args: Args): Record<string, TagFilterResult> {
+export function getTagFilters(args: Args): TagOptions {
 	return {
 		// server
 		server: args.message.guild?.name,
@@ -14,6 +14,9 @@ export function getTagFilters(args: Args): Record<string, TagFilterResult> {
 		'author.name': args.message.author.username,
 		'author.avatar': args.message.author.avatarURL(),
 		'author.mention': args.message.author.toString(),
+
+		// user
+		user: args.pick('user'),
 
 		// misc
 		prefix: container.client.options.defaultPrefix?.toString(),
