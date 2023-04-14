@@ -1,0 +1,10 @@
+version: '3.9'
+
+services:
+  zeyr:
+    build:
+      context: .
+      target: development
+    env_file: .env
+    volumes:
+      - ./:/opt/app
