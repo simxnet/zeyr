@@ -1,8 +1,8 @@
-import { ApplyOptions } from "@sapphire/decorators";
-import { Listener, Store, type PieceOptions, Piece } from "@sapphire/framework";
-import { blue, gray, green, yellow } from "colorette";
+import { ApplyOptions } from '@sapphire/decorators';
+import { Listener, Piece, type PieceOptions, Store } from '@sapphire/framework';
+import { blue, gray, green, yellow } from 'colorette';
 
-const dev = process.env.NODE_ENV !== "production";
+const dev = process.env.NODE_ENV !== 'production';
 
 @ApplyOptions<Listener.Options>({ once: true })
 export class UserEvent extends Listener {
@@ -14,8 +14,8 @@ export class UserEvent extends Listener {
 	}
 
 	private printBanner() {
-		const success = green("+");
-		const info = yellow("*");
+		const success = green('+');
+		const info = yellow('*');
 
 		if (dev) {
 			this.container.logger.info(`${info} Development build`);
@@ -34,12 +34,12 @@ export class UserEvent extends Listener {
 	}
 
 	private styleStore(store: Store<Piece<PieceOptions>>, last: boolean) {
-		const success = green("+");
+		const success = green('+');
 
 		return gray(
-			`${last ? "└─" : "├─"} ${success} ${this.style(
-				store.size.toString().padEnd(3, " "),
-			)} ${store.name}.`,
+			`${last ? '└─' : '├─'} ${success} ${this.style(
+				store.size.toString().padEnd(3, ' ')
+			)} ${store.name}.`
 		);
 	}
 }

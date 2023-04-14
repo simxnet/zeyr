@@ -1,7 +1,7 @@
-import { SapphireClient, container } from "@sapphire/framework";
-import type { ClientOptions } from "discord.js";
-import { PrismaClient } from "@prisma/client";
-import { greenBright } from "colorette";
+import { PrismaClient } from '@prisma/client';
+import { SapphireClient, container } from '@sapphire/framework';
+import { greenBright } from 'colorette';
+import type { ClientOptions } from 'discord.js';
 
 export class ZClient extends SapphireClient {
 	constructor(opts: ClientOptions) {
@@ -18,7 +18,7 @@ export class ZClient extends SapphireClient {
 		await container.prisma
 			.$connect()
 			.then(() => {
-				container.logger.info(`${greenBright("+")} Prisma service online`);
+				container.logger.info(`${greenBright('+')} Prisma service online`);
 			})
 			.catch((error) => container.logger.fatal(error));
 	}

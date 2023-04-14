@@ -1,6 +1,6 @@
-import { Command, Precondition } from "@sapphire/framework";
-import type { Message } from "discord.js";
-import { developers } from "../lib/constants";
+import { developers } from '../lib/constants';
+import { Command, Precondition } from '@sapphire/framework';
+import type { Message } from 'discord.js';
 
 export class UserPrecondition extends Precondition {
 	public run(message: Message) {
@@ -15,7 +15,7 @@ export class UserPrecondition extends Precondition {
 		if (developers.includes(context.member?.user.id!)) {
 			return this.ok();
 		} else {
-			return this.error({ message: "Noi noi" });
+			return this.error({ message: 'Noi noi' });
 		}
 	}
 }

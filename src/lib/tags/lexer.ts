@@ -1,15 +1,15 @@
-import { TagFilterResult } from '../types/Tag';
+import type { TagOptions } from '../types/Tag';
 
 export class TagLexer {
-	filter: Record<string, TagFilterResult>;
+	filter: TagOptions;
 	separators: string;
-	constructor(filter: Record<string, TagFilterResult>) {
+	constructor(filter: TagOptions) {
 		this.filter = filter;
 		this.separators = '{{key}}';
 	}
 
 	public parse() {
-		const parsedFilter: Record<string, TagFilterResult> = {};
+		const parsedFilter: TagOptions = {};
 
 		for (const key of Object.keys(this.filter)) {
 			parsedFilter[this.separators.replace('key', key)] = this.filter[key];

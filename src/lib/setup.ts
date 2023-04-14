@@ -1,22 +1,22 @@
 // Unless explicitly defined, set NODE_ENV as development:
-process.env.NODE_ENV ??= "development";
+process.env.NODE_ENV ??= 'development';
 
+import '@kaname-png/plugin-subcommands-advanced/register';
 import {
 	ApplicationCommandRegistries,
-	RegisterBehavior,
-} from "@sapphire/framework";
-import "@sapphire/plugin-api/register";
-import "@sapphire/plugin-editable-commands/register";
-import "@sapphire/plugin-logger/register";
-import "@kaname-png/plugin-subcommands-advanced/register";
+	RegisterBehavior
+} from '@sapphire/framework';
+import '@sapphire/plugin-api/register';
+import '@sapphire/plugin-editable-commands/register';
+import '@sapphire/plugin-logger/register';
 
-import { setup } from "@skyra/env-utilities";
-import * as colorette from "colorette";
-import { inspect } from "util";
+import { setup } from '@skyra/env-utilities';
+import * as colorette from 'colorette';
+import { inspect } from 'util';
 
 // Set default behavior to bulk overwrite
 ApplicationCommandRegistries.setDefaultBehaviorWhenNotIdentical(
-	RegisterBehavior.BulkOverwrite,
+	RegisterBehavior.BulkOverwrite
 );
 
 // Read env var
