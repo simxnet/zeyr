@@ -16,6 +16,16 @@
         "ideas",
         "maintenance"
       ]
+    },
+    {
+      "login": "chikaof",
+      "name": "Chika",
+      "avatar_url": "https://avatars.githubusercontent.com/u/95551108?v=4",
+      "profile": "https://github.com/chikaof",
+      "contributions": [
+        "code",
+        "maintenance"
+      ]
     }
   ],
   "contributorsPerLine": 7,
