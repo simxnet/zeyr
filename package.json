@@ -34,13 +34,15 @@
 		"discord.js": "^14.7.1"
 	},
 	"devDependencies": {
-		"@sapphire/ts-config": "latest",
+		"@sapphire/ts-config": "^4.0.0",
 		"@types/node": "latest",
 		"@types/ws": "^8.5.4",
+		"colorette": "^2.0.19",
 		"npm-run-all": "^4.1.5",
 		"prisma": "^4.12.0",
 		"rome": "12.0.0",
 		"tsc-watch": "^6.0.0",
+		"tslib": "^2.5.0",
 		"typescript": "latest"
 	},
 	"prettier": "@sapphire/prettier-config"

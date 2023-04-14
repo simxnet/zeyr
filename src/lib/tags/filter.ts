@@ -16,7 +16,7 @@ export function getTagFilters(args: Args): TagOptions {
 		'author.mention': args.message.author.toString(),
 
 		// user
-		user: args.pick('user'),
+		user: () => args.pick('user').catch(() => args.message.author),
 
 		// misc
 		prefix: container.client.options.defaultPrefix?.toString(),

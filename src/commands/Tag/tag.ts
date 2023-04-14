@@ -27,7 +27,7 @@ import type { Message } from 'discord.js';
 })
 export class UserCommand extends Subcommand {
 	public async show(message: Message, args: Args) {
-		const name = await args.rest('string');
+		const name = await args.pick('string');
 
 		const tag = await this.container.prisma.tag.findFirst({
 			where: {
@@ -40,7 +40,7 @@ export class UserCommand extends Subcommand {
 		const filter = getTagFilters(args);
 		const lexer = new TagLexer(filter).parse();
 
-		const content = new TagParser(lexer).parse(tag.content);
+		const content = await new TagParser(lexer).parse(tag.content);
 
 		return send(message, content);
 	}
