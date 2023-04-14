@@ -1,7 +1,7 @@
 import { getTagFilters } from '../../lib/tags/filter';
 import { TagLexer } from '../../lib/tags/lexer';
 import { TagParser } from '../../lib/tags/parser';
-import { ApplyOptions } from '@sapphire/decorators';
+import { ApplyOptions, RequiresUserPermissions } from '@sapphire/decorators';
 import { Args } from '@sapphire/framework';
 import { send } from '@sapphire/plugin-editable-commands';
 import { Subcommand } from '@sapphire/plugin-subcommands';
@@ -9,6 +9,7 @@ import type { Message } from 'discord.js';
 
 @ApplyOptions<Subcommand.Options>({
 	description: 'Tags commands',
+	aliases: ['t'],
 	subcommands: [
 		{
 			name: "show",
@@ -22,6 +23,10 @@ import type { Message } from 'discord.js';
 		{
 			name: "delete",
 			messageRun: "delete"
+		},
+		{
+			name: "removeAll",
+			messageRun: "removeAll"
 		}
 	]
 })
@@ -31,7 +36,8 @@ export class UserCommand extends Subcommand {
 
 		const tag = await this.container.prisma.tag.findFirst({
 			where: {
-				name
+				name,
+				guildId: message.guildId!
 			}
 		});
 
@@ -48,26 +54,36 @@ export class UserCommand extends Subcommand {
 	}
 
 	public async add(message: Message, args: Args) {
-		const name = await args.pick('string');
-		const content = await args.rest('string');
+		try {
+			const name = await args.pick('string');
+			const content = await args.rest('string');
 
-		const tag = await this.container.prisma.tag.findFirst({
-			where: {
-				name
-			}
-		});
+			if (name.length >= 64)
+				return send(message, '❌ The tag name is too long');
 
-		if (tag) return send(message, `❌ The tag \`${name}\` already exists`);
+			const tag = await this.container.prisma.tag.findFirst({
+				where: {
+					name,
+					guildId: message.guildId!
+				}
+			});
 
-		await this.container.prisma.tag.create({
-			data: {
-				name,
-				content,
-				userId: message.author.id
-			}
-		});
+			if (tag) return send(message, `❌ The tag \`${name}\` already exists`);
 
-		return send(message, `✅ I've just created \`${name}\` tag`);
+			await this.container.prisma.tag.create({
+				data: {
+					name,
+					content,
+					memberId: message.member!.id,
+					guildId: message.guildId!
+				}
+			});
+
+			return send(message, `✅ I've just created \`${name}\` tag`);
+		} catch (e) {
+			console.log(e);
+			return send(message, 'Lol error');
+		}
 	}
 
 	public async delete(message: Message, args: Args) {
@@ -75,7 +91,8 @@ export class UserCommand extends Subcommand {
 
 		const tag = await this.container.prisma.tag.findFirst({
 			where: {
-				name
+				name,
+				guildId: message.guildId!
 			}
 		});
 
@@ -88,5 +105,26 @@ export class UserCommand extends Subcommand {
 		});
 
 		return send(message, `✅ I've just deleted \`${name}\` tag`);
+	}
+
+	@RequiresUserPermissions(['Administrator'])
+	public async removeAll(message: Message) {
+		const tags = await this.container.prisma.tag.findMany({
+			where: {
+				guildId: message.guildId!
+			}
+		});
+
+		if (!tags.length) return send(message, '❌ There are no tags to delete');
+
+		await this.container.prisma.tag
+			.deleteMany({
+				where: {
+					guildId: message.guildId!
+				}
+			})
+			.catch(() => send(message, '❌ Something happened'));
+
+		return send(message, `✅ I've just deleted all the tags in this server`);
 	}
 }

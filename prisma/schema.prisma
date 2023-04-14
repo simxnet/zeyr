@@ -3,24 +3,31 @@ generator client {
 }
 
 datasource db {
-  provider = "mysql"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
 model User {
   id String @id
 
-  status Status @default(REGULAR)
-  Tag    Tag[]
+  bio String @default("I like cats with boots")
 
   @@map("users")
+}
+
+model Member {
+  id      String @id
+  guildId String
+
+  tags Tag[]
+
+  @@map("members")
 }
 
 model Guild {
   id String @unique
 
-  status Status @default(REGULAR)
-  tags   Tag[]
+  tags Tag[]
 
   @@map("guilds")
 }
@@ -30,18 +37,12 @@ model Tag {
   guild   Guild?  @relation(fields: [guildId], references: [id])
   guildId String?
 
-  name    String
-  content String
-  author  User   @relation(fields: [userId], references: [id])
-  userId  String
+  name     String
+  content  String
+  author   Member @relation(fields: [memberId], references: [id])
+  memberId String
 
   @@index([guildId])
-  @@index([userId])
+  @@index([memberId])
   @@map("tags")
-}
-
-enum Status {
-  REGULAR
-  PREMIUM
-  STAR
 }
