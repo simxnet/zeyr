@@ -38,7 +38,9 @@ export class UserCommand extends Subcommand {
 		if (!tag) return send(message, `❌ The tag \`${name}\` does not exist`);
 
 		const filter = getTagFilters(args);
-		const lexer = new TagLexer(filter).parse();
+		const lexer = new TagLexer(filter).format();
+
+		console.log(lexer);
 
 		const content = await new TagParser(lexer).parse(tag.content);
 

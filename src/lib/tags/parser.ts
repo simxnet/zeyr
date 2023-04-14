@@ -1,5 +1,5 @@
-import type { TagOptions } from '../types/Tag';
 import { isThenable } from '@sapphire/utilities';
+import { TagOptions } from './types';
 
 export class TagParser {
 	filter: TagOptions;

@@ -1,5 +1,7 @@
-import type { TagOptions } from '../types/Tag';
 import { Args, container } from '@sapphire/framework';
+import { getLastMedia } from '../utils';
+import { TextChannel } from 'discord.js';
+import { TagOptions } from './types';
 
 export function getTagFilters(args: Args): TagOptions {
 	return {
@@ -17,9 +19,31 @@ export function getTagFilters(args: Args): TagOptions {
 
 		// user
 		user: () => args.pick('user').catch(() => args.message.author),
+		'user.name': () =>
+			args
+				.pick('user')
+				.then((u) => u.username)
+				.catch(() => args.message.author.username),
+		'user.id': () =>
+			args
+				.pick('user')
+				.then((u) => u.id)
+				.catch(() => args.message.author.id),
+		'user.avatar': () =>
+			args
+				.pick('user')
+				.then((u) => u.displayAvatarURL())
+				.catch(() => args.message.author.displayAvatarURL()),
+		'user.mention': () => args.pick('user').catch(() => args.message.author),
 
 		// misc
 		prefix: container.client.options.defaultPrefix?.toString(),
-		ping: container.client.ws.ping
+		ping: container.client.ws.ping,
+
+		// images
+		'attachment.last': () =>
+			getLastMedia(args.message.channel as TextChannel)
+				.then((att) => att?.proxyURL)
+				.catch(() => 'no')
 	};
 }
