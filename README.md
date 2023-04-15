@@ -13,10 +13,11 @@ I made this code quick, please go ezzz
 - [x] Get images from embeds in `getLastMedia()`
 - [ ] Improve tag scripting
 - [x] Finish image manipulation categories
-- [ ] Add more stats on `system` category
+- [x] Add more stats on `system` category
 - [ ] Create a handler for tags
 - [ ] A way to decode webp images with Imagescript
-- [ ] Setup redis
+- [-] Setup redis (in course)
+- [ ] Migrate tag system onto slash commands
 
 # Future features
 > These features are not confirmed yet
