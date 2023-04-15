@@ -24,7 +24,7 @@ I made this code quick, please go ezzz
 - [x] Image manipulation
 - [ ] Social media notifications
 - [ ] Reminders
-- [ ] Public code executing
+- [x] Public code executing
 
 I don't know how to call them so i made random names.
 ## Contributors ✨
