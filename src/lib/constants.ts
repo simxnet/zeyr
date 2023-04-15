@@ -6,6 +6,8 @@ export const srcDir = join(rootDir, 'src');
 export const developers = ['1076700780175831100', '462780441594822687'];
 export const color = '#56c4fb';
 
+export const WEBSHOT_API = 'https://backup15.terasp.net';
+
 export const pistonLangs = [
 	'c',
 	'cpp',
