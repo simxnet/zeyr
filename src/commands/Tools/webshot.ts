@@ -9,7 +9,7 @@ import { AttachmentBuilder } from 'discord.js';
         parentCommandName: 'tools',
         slashSubcommand: (builder) => builder.setName('webshot').setDescription('Take a screenshot of a website')
         .addStringOption(option => option.setName('url').setDescription('URL of the website').setRequired(true))
-        .addStringOption(option => option.setName('fullpage').setDescription('Should screenshot full page').setRequired(false))
+        .addBooleanOption(option => option.setName('fullpage').setDescription('Should screenshot full page').setRequired(false))
         .addBooleanOption(option => option.setName('wait').setDescription('Wait time before screenshot').setRequired(false))
         .addNumberOption(option => option.setName('width').setDescription('Width of the screenshot').setRequired(false))
         .addNumberOption(option => option.setName('height').setDescription('Height of the screenshot').setRequired(false))
