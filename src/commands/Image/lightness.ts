@@ -43,7 +43,7 @@ export class UserCommand extends Command {
 				})
 			)) as Image;
 
-		lighted.lightness(value, true);
+		lighted.lightness(value, false);
 
 		const buffer = await lighted.encode().then((i) => i.buffer);
 		const file = new AttachmentBuilder(Buffer.from(buffer), {
