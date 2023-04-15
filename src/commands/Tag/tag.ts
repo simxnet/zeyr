@@ -135,10 +135,12 @@ export class UserCommand extends Subcommand {
 				iconURL: message.author.displayAvatarURL()
 			})
 			.setDescription(codeBlock(tag.content))
-			.addFields([{
-				name: "Owner",
-				value: `<@${tag.author.id}>`
-		}])
+			.addFields([
+				{
+					name: 'Owner',
+					value: `<@${tag.author.id}>`
+				}
+			]);
 
 		return send(message, {
 			content: `✅ You are viewing \`${name}\` tag`,

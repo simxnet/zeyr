@@ -6,16 +6,16 @@ import { ApplicationCommandRegistry } from '@sapphire/framework';
     name: 'system'
 })
 export class ParentCommand extends Subcommand {
- 	public override registerApplicationCommands(registry: ApplicationCommandRegistry) {
- 		registry.registerChatInputCommand(
-                (ctx) => {
-				this.hooks.subcommands(this, ctx);
+	public override registerApplicationCommands(
+		registry: ApplicationCommandRegistry
+	) {
+		registry.registerChatInputCommand((ctx) => {
+			this.hooks.subcommands(this, ctx);
 
- 				// Calling both hooks is only necessary if required, it is not mandatory.
-				return ctx
-					.setName(this.name)
-					.setDescription('Parent command of system subcommands')
-			}
-		);
- 	}
+			// Calling both hooks is only necessary if required, it is not mandatory.
+			return ctx
+				.setName(this.name)
+				.setDescription('Parent command of system subcommands');
+		});
+	}
 }

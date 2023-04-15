@@ -3,6 +3,9 @@ import { getLastMedia } from '../utils';
 import { TextChannel } from 'discord.js';
 import { TagOptions } from './types';
 
+/**
+ * Every tag may have his own callback
+ */
 export function getTagFilters(args: Args): TagOptions {
 	return {
 		// server
@@ -39,12 +42,12 @@ export function getTagFilters(args: Args): TagOptions {
 		// misc
 		prefix: container.client.options.defaultPrefix?.toString(),
 		ping: container.client.ws.ping,
-		args: () => args.rest("string").catch(() => "no"),
+		args: () => args.rest('string').catch(() => 'no args'),
 
 		// images
 		'attachment.last': () =>
 			getLastMedia(args.message.channel as TextChannel)
 				.then((att) => att?.proxyURL)
-				.catch(() => 'no')
+				.catch(() => 'no images')
 	};
 }

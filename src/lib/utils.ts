@@ -7,9 +7,9 @@ export async function getLastMedia(channel: TextChannel, limit = 30) {
 		(message: Message) => message.attachments.size > 0
 	);
 
-	if (!lastMessage) return undefined
-	
-	const attachment = lastMessage.attachments.first()
+	if (!lastMessage) return undefined;
+
+	const attachment = lastMessage.attachments.first();
 
 	return attachment;
 }
