@@ -53,8 +53,6 @@ export class UserCommand extends Subcommand {
 		const filter = getTagFilters(args);
 		const lexer = new TagLexer(filter).format();
 
-		console.log(lexer);
-
 		const content = await new TagParser(lexer).parse(tag.content);
 
 		return send(message, content);

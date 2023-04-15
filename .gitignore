@@ -22,6 +22,7 @@ config.ts
 
 # Ignore npm lockfiles file
 package-lock.json
+pnpm-lock.yaml
 
 # Environment variables
 .env
