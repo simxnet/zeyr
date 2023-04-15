@@ -22,13 +22,8 @@ export class PluginListener extends Listener<
 				errorMessage = '❌ You need to provide the enough arguments';
 				break;
 
-			case Identifiers.CommandDisabled:
-				errorMessage = '⚠ Seems this command is disabled';
-				break;
-
 			default:
-				errorMessage =
-					'There was an error while running this command. Please try again.';
+				errorMessage = error.message;
 				break;
 		}
 

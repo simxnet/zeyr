@@ -10,12 +10,21 @@ I made this code quick, please go ezzz
 
 # TODO
 - [x] Optimize image manipulation commands
-- [ ] Get images from embeds in `getLastMedia()`
+- [x] Get images from embeds in `getLastMedia()`
 - [ ] Improve tag scripting
-- [ ] Finish image manipulation categories
+- [x] Finish image manipulation categories
 - [ ] Add more stats on `system` category
 - [ ] Create a handler for tags
 - [ ] A way to decode webp images with Imagescript
+- [ ] Setup redis
+
+# Future features
+> These features are not confirmed yet
+- [x] Tags
+- [x] Image manipulation
+- [ ] Social media notifications
+- [ ] Reminders
+- [ ] Public code executing
 
 I don't know how to call them so i made random names.
 ## Contributors ✨
