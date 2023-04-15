@@ -17,7 +17,7 @@ export class UserEvent extends Listener<typeof Events.GuildCreate> {
 			})
 			.setDescription(
 				`Zeyr is installed on your guild now!\n${codeBlock(
-					'Zeyr is a basic bot with general purposes, it has image manipulation, tag scripting...\n\nTag scripting is WIP so please if you encounter any problem notify us via the support server.'
+					'Zeyr is a basic bot with general purposes, it has image manipulation, tag scripting...\n\nTag scripting is WIP so please if you encounter any problem notify us via the support server.\n\nAlso, the prefix is ";" and tags commands are message based, this has comfort purposes'
 				)}\nThat's it, you are all set up to start using Zeyr on your server, have fun ;)\n\n*By having Zeyr you accept it's Terms of Service and Privacy policy*`
 			)
 			.setFooter({ iconURL: guild.iconURL() ?? undefined, text: guild.name });
