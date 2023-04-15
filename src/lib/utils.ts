@@ -16,3 +16,7 @@ export async function getLastMedia(channel: TextChannel, limit = 30) {
 
 	return attachment;
 }
+
+export function syntaxHighlight(language: string, code: string) {
+	return `\`\`\`${language}\n${code}\`\`\``;
+}
