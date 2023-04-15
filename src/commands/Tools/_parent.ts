@@ -3,7 +3,7 @@ import { ApplyOptions } from '@sapphire/decorators';
 import { ApplicationCommandRegistry } from '@sapphire/framework';
 
 @ApplyOptions<Subcommand.Options>({
-    name: 'tools'
+    name: __dirname.split('\\').pop()?.toLowerCase()!
 })
 export class ParentCommand extends Subcommand {
 	public override registerApplicationCommands(

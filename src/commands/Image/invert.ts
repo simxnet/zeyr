@@ -7,7 +7,7 @@ import { Image, decode } from 'imagescript';
 
 @ApplyOptions<Command.Options>({
     registerSubCommand: {
-        parentCommandName: 'image',
+        parentCommandName: __dirname.split('\\').pop()?.toLowerCase()!,
         slashSubcommand: (builder) => builder.setName('invert').setDescription('Inverts the images colors')
         .addAttachmentOption((o) => o.setName("image").setDescription("Image to invert").setRequired(false))
     }

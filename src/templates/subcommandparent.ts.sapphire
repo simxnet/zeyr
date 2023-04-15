@@ -1,3 +1,7 @@
+{
+  "category": "commands"
+}
+---
 import { Subcommand } from '@kaname-png/plugin-subcommands-advanced';
 import { ApplyOptions } from '@sapphire/decorators';
 import { ApplicationCommandRegistry } from '@sapphire/framework';
@@ -15,7 +19,7 @@ export class ParentCommand extends Subcommand {
 			// Calling both hooks is only necessary if required, it is not mandatory.
 			return ctx
 				.setName(this.name)
-				.setDescription('Parent command of image subcommands');
+				.setDescription('Parent command of ____ subcommands');
 		});
 	}
 }

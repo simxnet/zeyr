@@ -6,7 +6,7 @@ import { EmbedBuilder } from 'discord.js';
 
 @ApplyOptions<Command.Options>({
     registerSubCommand: {
-        parentCommandName: 'system',
+        parentCommandName: __dirname.split('\\').pop()?.toLowerCase()!,
         slashSubcommand: (builder) => builder.setName('stats').setDescription('Get internal information from Zeyr')
     }
 })

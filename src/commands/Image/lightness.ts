@@ -7,7 +7,7 @@ import { Image, decode } from 'imagescript';
 
 @ApplyOptions<Command.Options>({
     registerSubCommand: {
-        parentCommandName: 'image',
+        parentCommandName: __dirname.split('\\').pop()?.toLowerCase()!,
         slashSubcommand: (builder) => builder.setName('lightness').setDescription('Sets the brightness of the image')
         .addNumberOption((o) => o.setName("value").setDescription("The lightness to apply (0..1)").setRequired(true).setMinValue(0).setMaxValue(1))
         .addAttachmentOption((o) => o.setName("image").setDescription("Image to invert").setRequired(false))
