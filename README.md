@@ -6,7 +6,14 @@
 > A Discord bot made with Sapphire framework
 
 # Disclaimer
-Please don't mind the Tag system names like parser, lexer...
+I made this code quick, please go ezzz
+
+# TODO
+- [x] Optimize image manipulation commands
+- [ ] Get images from embeds in `getLastMedia()`
+- [ ] Improve tag scripting
+- [ ] Finish image manipulation categories
+- [ ] Add more stats on `system` category
 
 I don't know how to call them so i made random names.
 ## Contributors ✨
