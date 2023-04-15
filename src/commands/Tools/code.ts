@@ -48,7 +48,7 @@ export class UserCommand extends Command {
 					result.data.version
 				}) code, took ${stopwatch.stop().toString()}\n${syntaxHighlight(
 					result.data.language,
-					result.data.run.stdout
+					result.data.run.output
 				)}`
 			});
 		} else {
