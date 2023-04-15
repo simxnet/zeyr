@@ -5,7 +5,9 @@
 		"outDir": "dist",
 		"tsBuildInfoFile": "dist/.tsbuildinfo",
 		"verbatimModuleSyntax": false,
-		"skipLibCheck": true
+		"skipLibCheck": true,
+		"declarationMap": false,
+		"declaration": false
 	},
 	"include": ["src"],
 	"exclude": ["node_modules"]

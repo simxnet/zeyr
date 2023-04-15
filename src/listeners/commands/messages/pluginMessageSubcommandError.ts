@@ -22,6 +22,11 @@ export class PluginListener extends Listener<
 				errorMessage = '❌ You need to provide the enough arguments';
 				break;
 
+			case Identifiers.PreconditionCooldown:
+				context.message.react('⛔');
+				errorMessage = '❌ You are being rate limited';
+				break;
+
 			default:
 				errorMessage = error.message;
 				break;

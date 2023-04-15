@@ -1,6 +1,6 @@
 import './lib/setup';
 import { ZClient } from './lib/structures/ZClient';
-import { LogLevel } from '@sapphire/framework';
+import { BucketScope, LogLevel } from '@sapphire/framework';
 import {
 	ActivityType,
 	GatewayIntentBits,
@@ -36,6 +36,13 @@ const client = new ZClient({
 	},
 	allowedMentions: {
 		parse: []
+	},
+	defaultCooldown: {
+		delay: 10_000,
+		filteredCommands: [],
+		filteredUsers: [],
+		limit: 2,
+		scope: BucketScope.Channel
 	},
 	loadMessageCommandListeners: true,
 	subcommandsAdvanced: {

@@ -4,7 +4,7 @@ import { Stopwatch } from '@sapphire/stopwatch';
 import { WEBSHOT_API } from '../../lib/constants';
 import { AttachmentBuilder } from 'discord.js';
 @ApplyOptions<Command.Options>({
-    preconditions: ['NSFW'],
+	nsfw: true,
     registerSubCommand: {
         parentCommandName: 'tools',
         slashSubcommand: (builder) => builder.setName('webshot').setDescription('Take a screenshot of a website')
