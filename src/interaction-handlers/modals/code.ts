@@ -50,7 +50,6 @@ export class ModalHandler extends InteractionHandler {
 		});
 
 		if (result.success) {
-			console.log(result.data.run);
 			if (result.data.run.output === '') {
 				return interaction.editReply({
 					content: `✅ Your code ran with no output! ${result.data.language}(${
