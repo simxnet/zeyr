@@ -59,36 +59,30 @@ export class UserCommand extends Subcommand {
 	}
 
 	public async add(message: Message, args: Args) {
-		try {
-			const name = await args.pick('string');
-			const content = await args.rest('string');
+		const name = await args.pick('string');
+		const content = await args.rest('string');
 
-			if (name.length >= 64)
-				return send(message, '❌ The tag name is too long');
+		if (name.length >= 64) return send(message, '❌ The tag name is too long');
 
-			const tag = await this.container.prisma.tag.findFirst({
-				where: {
-					name,
-					guildId: message.guildId!
-				}
-			});
+		const tag = await this.container.prisma.tag.findFirst({
+			where: {
+				name,
+				guildId: message.guildId!
+			}
+		});
 
-			if (tag) return send(message, `❌ The tag \`${name}\` already exists`);
+		if (tag) return send(message, `❌ The tag \`${name}\` already exists`);
 
-			await this.container.prisma.tag.create({
-				data: {
-					name,
-					content,
-					memberId: message.member!.id,
-					guildId: message.guildId!
-				}
-			});
+		await this.container.prisma.tag.create({
+			data: {
+				name,
+				content,
+				memberId: message.member!.id,
+				guildId: message.guildId!
+			}
+		});
 
-			return send(message, `✅ I've just created \`${name}\` tag`);
-		} catch (e) {
-			console.log(e);
-			return send(message, 'Lol error');
-		}
+		return send(message, `✅ I've just created \`${name}\` tag`);
 	}
 
 	public async delete(message: Message, args: Args) {
