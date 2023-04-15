@@ -27,11 +27,14 @@
 		"@sapphire/plugin-editable-commands": "^3.0.0",
 		"@sapphire/plugin-logger": "^3.0.1",
 		"@sapphire/plugin-subcommands": "^4.0.0",
+		"@sapphire/ratelimits": "^2.4.6",
+		"@sapphire/stopwatch": "^1.5.0",
 		"@sapphire/time-utilities": "^1.7.8",
 		"@sapphire/type": "^2.3.0",
 		"@sapphire/utilities": "^3.11.0",
 		"@skyra/env-utilities": "^1.1.0",
-		"discord.js": "^14.7.1"
+		"discord.js": "^14.7.1",
+		"imagescript": "^1.2.16"
 	},
 	"devDependencies": {
 		"@sapphire/ts-config": "^4.0.0",

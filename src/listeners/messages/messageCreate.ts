@@ -52,8 +52,5 @@ export class UserEvent extends Listener<typeof Events.MessageCreate> {
 				}
 			});
 		}
-
-		console.log(user);
-		console.log(member);
 	}
 }

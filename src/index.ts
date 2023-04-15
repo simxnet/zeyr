@@ -1,7 +1,13 @@
 import './lib/setup';
 import { ZClient } from './lib/structures/ZClient';
-import { LogLevel } from '@sapphire/framework'
-import { ActivityType, GatewayIntentBits, Options, Partials, PresenceUpdateStatus } from 'discord.js';
+import { LogLevel } from '@sapphire/framework';
+import {
+	ActivityType,
+	GatewayIntentBits,
+	Options,
+	Partials,
+	PresenceUpdateStatus
+} from 'discord.js';
 
 const client = new ZClient({
 	defaultPrefix: process.env.DEFAULT_PREFIX,
@@ -20,11 +26,16 @@ const client = new ZClient({
 	partials: [Partials.Channel],
 	makeCache: Options.cacheWithLimits(),
 	presence: {
-		activities: [{
-			name: 'with tags',
-			type: ActivityType.Playing
-		}],
+		activities: [
+			{
+				name: 'with tags',
+				type: ActivityType.Playing
+			}
+		],
 		status: PresenceUpdateStatus.Online
+	},
+	allowedMentions: {
+		parse: []
 	},
 	loadMessageCommandListeners: true,
 	subcommandsAdvanced: {

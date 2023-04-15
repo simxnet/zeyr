@@ -3,7 +3,7 @@ import { Command, Precondition } from '@sapphire/framework';
 import type { Message } from 'discord.js';
 
 export class UserPrecondition extends Precondition {
-	public run(message: Message) {
+	public messageRun(message: Message) {
 		return this.dev(message);
 	}
 
