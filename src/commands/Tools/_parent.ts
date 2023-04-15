@@ -3,7 +3,7 @@ import { ApplyOptions } from '@sapphire/decorators';
 import { ApplicationCommandRegistry } from '@sapphire/framework';
 
 @ApplyOptions<Subcommand.Options>({
-    name: __dirname.split('\\').pop()?.toLowerCase()!
+    name: 'tools'
 })
 export class ParentCommand extends Subcommand {
 	public override registerApplicationCommands(
@@ -12,7 +12,6 @@ export class ParentCommand extends Subcommand {
 		registry.registerChatInputCommand((ctx) => {
 			this.hooks.subcommands(this, ctx);
 
-			// Calling both hooks is only necessary if required, it is not mandatory.
 			return ctx
 				.setName(this.name)
 				.setDescription('Parent command of tools subcommands');

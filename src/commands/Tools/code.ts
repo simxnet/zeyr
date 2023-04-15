@@ -7,7 +7,7 @@ import { pistonLangs } from '../../lib/constants';
 
 @ApplyOptions<Command.Options>({
     registerSubCommand: {
-        parentCommandName: __dirname.split('\\').pop()?.toLowerCase()!,
+        parentCommandName: 'tools',
         slashSubcommand: (builder) => builder.setName('code').setDescription('Execute code on a external container')
         .addStringOption(option => option.setName('language').setDescription('Language of the code').setRequired(true).addChoices(
             ...pistonLangs.map((lang) => ({

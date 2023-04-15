@@ -7,7 +7,7 @@ import { Image, decode } from 'imagescript';
 
 @ApplyOptions<Command.Options>({
     registerSubCommand: {
-        parentCommandName: __dirname.split('\\').pop()?.toLowerCase()!,
+        parentCommandName: 'image',
         slashSubcommand: (builder) => builder.setName('resize').setDescription('Resizes the image to the given dimensions.')
         .addNumberOption((o) => o.setName("width").setDescription("Width of the image").setRequired(true))
         .addNumberOption((o) => o.setName("height").setDescription("Height of the image").setRequired(true))

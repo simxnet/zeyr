@@ -6,7 +6,7 @@ import { AttachmentBuilder } from 'discord.js';
 @ApplyOptions<Command.Options>({
     preconditions: ['NSFW'],
     registerSubCommand: {
-        parentCommandName: __dirname.split('\\').pop()?.toLowerCase()!,
+        parentCommandName: 'tools',
         slashSubcommand: (builder) => builder.setName('webshot').setDescription('Take a screenshot of a website')
         .addStringOption(option => option.setName('url').setDescription('URL of the website').setRequired(true))
         .addStringOption(option => option.setName('fullpage').setDescription('Should screenshot full page').setRequired(false))

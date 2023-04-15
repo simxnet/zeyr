@@ -7,7 +7,7 @@ import { Image, decode } from 'imagescript';
 
 @ApplyOptions<Command.Options>({
     registerSubCommand: {
-        parentCommandName: __dirname.split('\\').pop()?.toLowerCase()!,
+        parentCommandName: 'image',
         slashSubcommand: (builder) => builder.setName('circle').setDescription('Crops the image into a circle')
         .addAttachmentOption((o) => o.setName("image").setDescription("Image to crop").setRequired(false))
     }

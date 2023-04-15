@@ -7,7 +7,7 @@ import { Image, decode } from 'imagescript';
 
 @ApplyOptions<Command.Options>({
     registerSubCommand: {
-        parentCommandName: __dirname.split('\\').pop()?.toLowerCase()!,
+        parentCommandName: 'image',
         slashSubcommand: (builder) => builder.setName('speech-balloon').setDescription('Creates a image with speech balloon')
         .addAttachmentOption((o) => o.setName("image").setDescription("🤓🤓").setRequired(false))
     }
