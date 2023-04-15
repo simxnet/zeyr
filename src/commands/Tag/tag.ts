@@ -2,7 +2,7 @@ import { color } from '../../lib/constants';
 import { getTagFilters } from '../../lib/tags/filter';
 import { TagLexer } from '../../lib/tags/lexer';
 import { TagParser } from '../../lib/tags/parser';
-import { ApplyOptions, RequiresUserPermissions } from '@sapphire/decorators';
+import { ApplyOptions } from '@sapphire/decorators';
 import { Args } from '@sapphire/framework';
 import { send } from '@sapphire/plugin-editable-commands';
 import { Subcommand } from '@sapphire/plugin-subcommands';
@@ -12,7 +12,6 @@ import { EmbedBuilder, Message } from 'discord.js';
 @ApplyOptions<Subcommand.Options>({
 	description: 'Tags commands',
 	aliases: ['t'],
-	cooldownDelay: 1000,
 	subcommands: [
 		{
 			name: "show",
@@ -32,8 +31,8 @@ import { EmbedBuilder, Message } from 'discord.js';
 			messageRun: "source"
 		},
 		{
-			name: "removeAll",
-			messageRun: "removeAll"
+			name: "raw",
+			messageRun: "source"
 		}
 	]
 })
@@ -140,26 +139,5 @@ export class UserCommand extends Subcommand {
 			content: `✅ You are viewing \`${name}\` tag`,
 			embeds: [embedTag]
 		});
-	}
-
-	@RequiresUserPermissions(['Administrator'])
-	public async removeAll(message: Message) {
-		const tags = await this.container.prisma.tag.findMany({
-			where: {
-				guildId: message.guildId!
-			}
-		});
-
-		if (!tags.length) return send(message, '❌ There are no tags to delete');
-
-		await this.container.prisma.tag
-			.deleteMany({
-				where: {
-					guildId: message.guildId!
-				}
-			})
-			.catch(() => send(message, '❌ Something happened'));
-
-		return send(message, `✅ I've just deleted all the tags in this server`);
 	}
 }

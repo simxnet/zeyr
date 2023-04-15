@@ -25,15 +25,15 @@ export class UserCommand extends Command {
 				(i) => i?.proxyURL
 			));
 
-		const balloon = (await fetch(this.SPEECH_BALLON_IMAGE_URL)
-			.then((img) => img.arrayBuffer())
-			.then((b) => decode(b as Buffer))) as Image;
-
 		if (!image)
 			return interaction.reply({
 				content: 'Please provide a valid image',
 				ephemeral: true
 			});
+
+		const balloon = (await fetch(this.SPEECH_BALLON_IMAGE_URL)
+			.then((img) => img.arrayBuffer())
+			.then((b) => decode(b as Buffer))) as Image;
 
 		const speech = (await fetch(image)
 			.then((img) => img.arrayBuffer())
@@ -50,7 +50,7 @@ export class UserCommand extends Command {
 
 		const buffer = await speech.encode().then((i) => i.buffer);
 		const file = new AttachmentBuilder(Buffer.from(buffer), {
-			name: 'speech.png'
+			name: 'speech.gif'
 		});
 
 		return interaction.editReply({

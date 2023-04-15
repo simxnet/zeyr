@@ -10,7 +10,8 @@ datasource db {
 model User {
   id String @id
 
-  bio String @default("I like cats with boots")
+  bio    String   @default("I like cats with boots")
+  member Member[]
 
   @@map("users")
 }
@@ -19,7 +20,9 @@ model Member {
   id      String @id
   guildId String
 
-  tags Tag[]
+  user   User   @relation(fields: [userId], references: [id])
+  tags   Tag[]
+  userId String
 
   @@map("members")
 }
