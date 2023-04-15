@@ -27,13 +27,18 @@ export class UserCommand extends Command {
 
 		if (!image)
 			return interaction.reply({
-				content: 'Please provide an image',
+				content: 'Please provide a valid image',
 				ephemeral: true
 			});
 
 		const circle = (await fetch(image)
 			.then((img) => img.arrayBuffer())
-			.then((b) => decode(b as Buffer))) as Image;
+			.then((b) => decode(b as Buffer))
+			.catch((e: Error) =>
+				interaction.editReply({
+					content: `❌ ${e.message}`
+				})
+			)) as Image;
 
 		circle.cropCircle();
 

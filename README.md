@@ -15,6 +15,7 @@ I made this code quick, please go ezzz
 - [ ] Finish image manipulation categories
 - [ ] Add more stats on `system` category
 - [ ] Create a handler for tags
+- [ ] A way to decode webp images with Imagescript
 
 I don't know how to call them so i made random names.
 ## Contributors ✨

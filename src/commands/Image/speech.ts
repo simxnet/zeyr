@@ -6,7 +6,6 @@ import { AttachmentBuilder, TextChannel } from 'discord.js';
 import { Image, decode } from 'imagescript';
 
 @ApplyOptions<Command.Options>({
-    cooldownDelay: 5000,
     registerSubCommand: {
         parentCommandName: 'image',
         slashSubcommand: (builder) => builder.setName('speech-balloon').setDescription('Creates a image with speech balloon')
@@ -32,13 +31,18 @@ export class UserCommand extends Command {
 
 		if (!image)
 			return interaction.reply({
-				content: 'Please provide an image',
+				content: 'Please provide a valid image',
 				ephemeral: true
 			});
 
 		const speech = (await fetch(image)
 			.then((img) => img.arrayBuffer())
-			.then((b) => decode(b as Buffer))) as Image;
+			.then((b) => decode(b as Buffer))
+			.catch((e: Error) =>
+				interaction.editReply({
+					content: `❌ ${e.message}`
+				})
+			)) as Image;
 
 		speech.fit(speech.width, speech.height + (balloon.height - 100) * 2);
 		speech.composite(balloon.resize(speech.width, balloon.height - 100), 0, 0);
