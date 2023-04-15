@@ -43,6 +43,14 @@ export class UserCommand extends Command {
 				{
 					name: 'Uptime',
 					value: codeBlock(`⏲ ${uptimeString}`)
+				},
+				{
+					name: 'Users cached',
+					value: codeBlock(`👤 ${this.container.client.users.cache.size}`)
+				},
+				{
+					name: 'Guilds cached',
+					value: codeBlock(`📕 ${this.container.client.guilds.cache.size}`)
 				}
 			]);
 
