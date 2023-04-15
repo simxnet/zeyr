@@ -3,7 +3,7 @@
 ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)
 ![Prisma](https://img.shields.io/badge/Prisma-3982CE?style=for-the-badge&logo=Prisma&logoColor=white)
-> A Discord bot made with Sapphire framework
+> Zeyr is a Discord bot without all that bullshit that bots have nowadays
 
 # Disclaimer
 I made this code quick, please go ezzz
