@@ -1,9 +1,9 @@
+import { getLastMedia } from '../../lib/utils';
 import { Command } from '@kaname-png/plugin-subcommands-advanced';
 import { ApplyOptions } from '@sapphire/decorators';
-import { Image, decode } from 'imagescript';
-import { getLastMedia } from '../../lib/utils';
-import { AttachmentBuilder, TextChannel } from 'discord.js';
 import { Stopwatch } from '@sapphire/stopwatch';
+import { AttachmentBuilder, TextChannel } from 'discord.js';
+import { Image, decode } from 'imagescript';
 
 @ApplyOptions<Command.Options>({
     cooldownDelay: 5000,

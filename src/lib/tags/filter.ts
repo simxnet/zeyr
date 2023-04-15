@@ -1,7 +1,7 @@
-import { Args, container } from '@sapphire/framework';
 import { getLastMedia } from '../utils';
-import { TextChannel } from 'discord.js';
 import { TagOptions } from './types';
+import { Args, container } from '@sapphire/framework';
+import { TextChannel } from 'discord.js';
 
 /**
  * Every tag may have his own callback

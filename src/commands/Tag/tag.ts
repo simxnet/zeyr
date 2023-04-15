@@ -1,3 +1,4 @@
+import { color } from '../../lib/constants';
 import { getTagFilters } from '../../lib/tags/filter';
 import { TagLexer } from '../../lib/tags/lexer';
 import { TagParser } from '../../lib/tags/parser';
@@ -7,7 +8,6 @@ import { send } from '@sapphire/plugin-editable-commands';
 import { Subcommand } from '@sapphire/plugin-subcommands';
 import { codeBlock } from '@sapphire/utilities';
 import { EmbedBuilder, Message } from 'discord.js';
-import { color } from '../../lib/constants';
 
 @ApplyOptions<Subcommand.Options>({
 	description: 'Tags commands',

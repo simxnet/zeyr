@@ -2,8 +2,8 @@ import { Identifiers, UserError } from '@sapphire/framework';
 import { Listener } from '@sapphire/framework';
 import { reply } from '@sapphire/plugin-editable-commands';
 import {
-	SubcommandPluginEvents,
-	MessageSubcommandErrorPayload
+	MessageSubcommandErrorPayload,
+	SubcommandPluginEvents
 } from '@sapphire/plugin-subcommands';
 
 export class PluginListener extends Listener<

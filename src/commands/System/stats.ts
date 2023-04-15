@@ -1,8 +1,8 @@
+import { color } from '../../lib/constants';
 import { Command } from '@kaname-png/plugin-subcommands-advanced';
 import { ApplyOptions } from '@sapphire/decorators';
-import { EmbedBuilder } from 'discord.js';
-import { color } from '../../lib/constants';
 import { codeBlock } from '@sapphire/utilities';
+import { EmbedBuilder } from 'discord.js';
 
 @ApplyOptions<Command.Options>({
     registerSubCommand: {
