@@ -3,6 +3,7 @@ import { ApplyOptions } from '@sapphire/decorators';
 import { Stopwatch } from '@sapphire/stopwatch';
 import { WEBSHOT_API } from '../../lib/constants';
 import { AttachmentBuilder } from 'discord.js';
+
 @ApplyOptions<Command.Options>({
 	nsfw: true,
     registerSubCommand: {
@@ -10,7 +11,7 @@ import { AttachmentBuilder } from 'discord.js';
         slashSubcommand: (builder) => builder.setName('webshot').setDescription('Take a screenshot of a website')
         .addStringOption(option => option.setName('url').setDescription('URL of the website').setRequired(true))
         .addBooleanOption(option => option.setName('fullpage').setDescription('Should screenshot full page').setRequired(false))
-        .addBooleanOption(option => option.setName('wait').setDescription('Wait time before screenshot').setRequired(false))
+        .addNumberOption(option => option.setName('wait').setDescription('Wait time before screenshot').setRequired(false))
         .addNumberOption(option => option.setName('width').setDescription('Width of the screenshot').setRequired(false))
         .addNumberOption(option => option.setName('height').setDescription('Height of the screenshot').setRequired(false))
         .addStringOption(option => option.setName('format').setDescription('Format of the output').setRequired(false).addChoices({

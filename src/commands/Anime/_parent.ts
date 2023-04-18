@@ -1,13 +1,9 @@
-{
-  "category": "commands"
-}
----
 import { Subcommand } from '@kaname-png/plugin-subcommands-advanced';
 import { ApplyOptions } from '@sapphire/decorators';
 import { ApplicationCommandRegistry } from '@sapphire/framework';
 
 @ApplyOptions<Subcommand.Options>({
-    name: __dirname.split('\\').pop()?.toLowerCase()!
+    name: "anime"
 })
 export class ParentCommand extends Subcommand {
 	public override registerApplicationCommands(
@@ -19,7 +15,7 @@ export class ParentCommand extends Subcommand {
 			// Calling both hooks is only necessary if required, it is not mandatory.
 			return ctx
 				.setName(this.name)
-				.setDescription('Parent command of ____ subcommands');
+				.setDescription('Parent command of anime subcommands');
 		});
 	}
 }

@@ -6,5 +6,5 @@ locations:
   listeners: listeners
   preconditions: preconditions
 customFileTemplates:
-  enabled: false
-  location: ""
+  enabled: true
+  location: "templates"

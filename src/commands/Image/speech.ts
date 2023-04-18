@@ -1,4 +1,4 @@
-import { getLastMedia } from '../../lib/utils';
+import { decodeWEBP, getLastMedia } from '../../lib/utils';
 import { Command } from '@kaname-png/plugin-subcommands-advanced';
 import { ApplyOptions } from '@sapphire/decorators';
 import { Stopwatch } from '@sapphire/stopwatch';
@@ -22,13 +22,12 @@ export class UserCommand extends Command {
 		const image =
 			interaction.options.getAttachment('image')?.proxyURL ??
 			(await getLastMedia(interaction.channel as TextChannel).then(
-				(i) => i?.proxyURL
+				(i) => i?.proxyURL || i?.url
 			));
 
 		if (!image)
-			return interaction.reply({
-				content: 'Please provide a valid image',
-				ephemeral: true
+			return interaction.editReply({
+				content: 'Please provide a valid image'
 			});
 
 		const balloon = (await fetch(this.SPEECH_BALLON_IMAGE_URL)
@@ -37,7 +36,7 @@ export class UserCommand extends Command {
 
 		const speech = (await fetch(image)
 			.then((img) => img.arrayBuffer())
-			.then((b) => decode(b as Buffer))
+			.then(async (b) => decodeWEBP(b as Buffer))
 			.catch((e: Error) =>
 				interaction.editReply({
 					content: `❌ ${e.message}`

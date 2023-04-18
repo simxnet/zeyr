@@ -4,9 +4,10 @@
 ---
 import { Command } from '@kaname-png/plugin-subcommands-advanced';
 import { ApplyOptions } from '@sapphire/decorators';
+
 @ApplyOptions<Command.Options>({
     registerSubCommand: {
-        parentCommandName: __dirname.split('\\').pop()?.toLowerCase()!,
+        parentCommandName: 'PARENT_HERE',
         slashSubcommand: (builder) => builder.setName('{{name}}').setDescription('_________________')
     }
 })

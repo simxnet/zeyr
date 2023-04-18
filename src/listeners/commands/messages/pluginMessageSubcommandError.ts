@@ -1,10 +1,10 @@
-import { Identifiers, UserError } from '@sapphire/framework';
-import { Listener } from '@sapphire/framework';
-import { reply } from '@sapphire/plugin-editable-commands';
+import { Identifiers, UserError } from "@sapphire/framework";
+import { Listener } from "@sapphire/framework";
+import { reply } from "@sapphire/plugin-editable-commands";
 import {
 	MessageSubcommandErrorPayload,
-	SubcommandPluginEvents
-} from '@sapphire/plugin-subcommands';
+	SubcommandPluginEvents,
+} from "@sapphire/plugin-subcommands";
 
 export class PluginListener extends Listener<
 	typeof SubcommandPluginEvents.MessageSubcommandError
@@ -19,12 +19,16 @@ export class PluginListener extends Listener<
 
 		switch (error.identifier) {
 			case Identifiers.ArgsMissing:
-				errorMessage = '❌ You need to provide the enough arguments';
+				errorMessage = "❌ You need to provide the enough arguments";
 				break;
 
 			case Identifiers.PreconditionCooldown:
-				context.message.react('⛔');
-				errorMessage = '❌ You are being rate limited';
+				context.message.react("⛔");
+				errorMessage = "❌ You are being rate limited";
+				break;
+
+			case Identifiers.CommandDisabled:
+				errorMessage = "❌ This command has been disabled temporally";
 				break;
 
 			default:
@@ -34,10 +38,10 @@ export class PluginListener extends Listener<
 
 		this.container.logger.error(
 			`Encountered error on message subcommand "${name}" at path "${location.full}"`,
-			error
+			error,
 		);
 		return reply(context.message, {
-			content: errorMessage
+			content: errorMessage,
 		});
 	}
 }

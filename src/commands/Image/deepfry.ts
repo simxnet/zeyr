@@ -8,8 +8,8 @@ import { Image } from 'imagescript';
 @ApplyOptions<Command.Options>({
     registerSubCommand: {
         parentCommandName: 'image',
-        slashSubcommand: (builder) => builder.setName('circle').setDescription('Crops the image into a circle')
-        .addAttachmentOption((o) => o.setName("image").setDescription("Image to crop").setRequired(false))
+        slashSubcommand: (builder) => builder.setName('deepfry').setDescription('Deepfries a image')
+        .addAttachmentOption((o) => o.setName("image").setDescription("Image to deepfry").setRequired(false))
     }
 })
 export class UserCommand extends Command {
@@ -30,7 +30,7 @@ export class UserCommand extends Command {
 				content: 'Please provide a valid image'
 			});
 
-		const circle = (await fetch(image)
+		const deepfry = (await fetch(image)
 			.then((img) => img.arrayBuffer())
 			.then(async (b) => decodeWEBP(b as Buffer))
 			.catch((e: Error) =>
@@ -39,11 +39,15 @@ export class UserCommand extends Command {
 				})
 			)) as Image;
 
-		circle.cropCircle();
+		deepfry.saturation(1, true);
+		deepfry.lightness(0.5, true);
+		deepfry.red(0.1);
+		deepfry.blue(0);
+		deepfry.green(0);
 
-		const buffer = await circle.encode().then((i) => i.buffer);
+		const buffer = await deepfry.encode().then((i) => i.buffer);
 		const file = new AttachmentBuilder(Buffer.from(buffer), {
-			name: 'circle.png'
+			name: 'deepfry.png'
 		});
 
 		return interaction.editReply({

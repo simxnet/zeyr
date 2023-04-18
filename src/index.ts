@@ -38,8 +38,8 @@ const client = new ZClient({
 		parse: []
 	},
 	defaultCooldown: {
-		delay: 10_000,
-		filteredCommands: [],
+		delay: 600,
+		filteredCommands: ['eval'],
 		filteredUsers: [],
 		limit: 2,
 		scope: BucketScope.Channel

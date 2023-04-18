@@ -5,27 +5,46 @@
 ![Prisma](https://img.shields.io/badge/Prisma-3982CE?style=for-the-badge&logo=Prisma&logoColor=white)
 > Zeyr is a Discord bot without all that bullshit that bots have nowadays
 
-# Disclaimer
-I made this code quick, please go ezzz
+# Warning
+I made this code quick, plz go ez
+
+# FAQ
+## Q: Why tags are disabled?
+## A: We are migrating them into slash and we also will now manage them via a custom handler at [chikof/tags](https://github.com/chikof/tags)
+
+More FaQ soon...
 
 # TODO
 - [x] Optimize image manipulation commands
 - [x] Get images from embeds in `getLastMedia()`
-- [ ] Improve tag scripting
+- [ ] Improve tag scripting ❌
 - [x] Finish image manipulation categories
 - [x] Add more stats on `system` category
-- [ ] Create a handler for tags
-- [ ] A way to decode webp images with Imagescript
-- [-] Setup redis (in course)
-- [ ] Migrate tag system onto slash commands
+- [ ] Create a handler for tags 🔧
+- [x] A way to decode webp images with Imagescript
+- [ ] Setup redis 🔧
+- [ ] Migrate tag system onto slash commands 🔧
+
+🔧 = Work in progress
+
+🔒 = Applied locally
+
+🧪 = Being tested and prepared for prod
+
+❌ = Interrumpted
+
+No emoji = Not even started
 
 # Future features
-> These features are not confirmed yet
+> These features are not confirmed yet and can be **removed** in any moment!
 - [x] Tags
 - [x] Image manipulation
+- [ ] Anime searching
 - [ ] Social media notifications
 - [ ] Reminders
-- [x] Public code executing
+- [ ] Public code executing
+- [ ] Game stats
+- [ ] Public tools for developers
 
 I don't know how to call them so i made random names.
 ## Contributors ✨

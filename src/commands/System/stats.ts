@@ -46,11 +46,17 @@ export class UserCommand extends Command {
 				},
 				{
 					name: 'Users cached',
-					value: codeBlock(`👤 ${this.container.client.users.cache.size}`)
+					value: codeBlock(`👤 ${this.container.client.users.cache.size}`),
+					inline: true
 				},
 				{
 					name: 'Guilds cached',
-					value: codeBlock(`📕 ${this.container.client.guilds.cache.size}`)
+					value: codeBlock(`📕 ${this.container.client.guilds.cache.size}`),
+					inline: true
+				},
+				{
+					name: 'Library',
+					value: codeBlock('🧩 Discord.js v14')
 				}
 			]);
 

@@ -1,6 +1,6 @@
-import type { Events, MessageCommandDeniedPayload } from '@sapphire/framework';
-import { Identifiers, Listener, type UserError } from '@sapphire/framework';
-import { reply } from '@sapphire/plugin-editable-commands';
+import type { Events, MessageCommandDeniedPayload } from "@sapphire/framework";
+import { Identifiers, Listener, type UserError } from "@sapphire/framework";
+import { reply } from "@sapphire/plugin-editable-commands";
 
 export class UserEvent extends Listener<typeof Events.MessageCommandDenied> {
 	public async run(error: UserError, context: MessageCommandDeniedPayload) {
@@ -9,12 +9,16 @@ export class UserEvent extends Listener<typeof Events.MessageCommandDenied> {
 
 		switch (error.identifier) {
 			case Identifiers.ArgsMissing:
-				errorMessage = '❌ You need to provide the enough arguments';
+				errorMessage = "❌ You need to provide the enough arguments";
 				break;
 
 			case Identifiers.PreconditionCooldown:
-				context.message.react('⛔');
-				errorMessage = '❌ You are being rate limited';
+				context.message.react("⛔");
+				errorMessage = "❌ You are being rate limited";
+				break;
+
+			case Identifiers.CommandDisabled:
+				errorMessage = "❌ This command has been disabled temporally";
 				break;
 
 			default:
@@ -24,10 +28,10 @@ export class UserEvent extends Listener<typeof Events.MessageCommandDenied> {
 
 		this.container.logger.error(
 			`Encountered error on message subcommand "${name}" at path "${location.full}"`,
-			error
+			error,
 		);
 		return reply(context.message, {
-			content: errorMessage
+			content: errorMessage,
 		});
 	}
 }
