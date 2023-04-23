@@ -3,11 +3,13 @@ import { Command, Precondition } from '@sapphire/framework';
 import type { Message } from 'discord.js';
 
 export class UserPrecondition extends Precondition {
-	public messageRun(message: Message) {
+	public override messageRun(message: Message) {
 		return this.dev(message);
 	}
 
-	public interactionRun(interaction: Command.ChatInputCommandInteraction) {
+	public override chatInputRun(
+		interaction: Command.ChatInputCommandInteraction
+	) {
 		return this.dev(interaction);
 	}
 
@@ -15,7 +17,10 @@ export class UserPrecondition extends Precondition {
 		if (developers.includes(context.member?.user.id!)) {
 			return this.ok();
 		} else {
-			return this.error({ message: 'Noi noi' });
+			return this.error({
+				message: 'Noi noi',
+				identifier: 'DeveloperPrecondition'
+			});
 		}
 	}
 }

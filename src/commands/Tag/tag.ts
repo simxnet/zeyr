@@ -8,10 +8,10 @@ import type { Message } from 'discord.js';
 	aliases: ['t', 'tags']
 })
 export class UserCommand extends Command {
-	public async messageRun(message: Message) {
+	public override async messageRun(message: Message) {
 		return send(
 			message,
-			'❌ We are migrating tags into slash and we also will now manage them via a custom handler, this handler will help us to make a cleaner structure and provide more customizable tags'
+			'❎ We are migrating tags into slash and we also will now manage them via a custom handler, this handler will help us to make a cleaner structure and provide more customizable tags'
 		);
 	}
 }

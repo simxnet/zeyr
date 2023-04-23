@@ -40,7 +40,7 @@ export class UserCommand extends Command {
 			.then(async (b) => decodeWEBP(b as Buffer))
 			.catch((e: Error) =>
 				interaction.editReply({
-					content: `❌ ${e.message}`
+					content: `❎ ${e.message}`
 				})
 			)) as Image;
 

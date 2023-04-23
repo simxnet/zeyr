@@ -14,11 +14,16 @@ import '@sapphire/plugin-logger/register';
 import { setup } from '@skyra/env-utilities';
 import * as colorette from 'colorette';
 import { inspect } from 'util';
+import { PaginatedMessage } from '@sapphire/discord.js-utilities';
 
 // Set default behavior to bulk overwrite
 ApplicationCommandRegistries.setDefaultBehaviorWhenNotIdentical(
 	RegisterBehavior.BulkOverwrite
 );
+
+// Set default message to a custom one
+PaginatedMessage.wrongUserInteractionReply = (u) =>
+	`⚠ Nice try, this embed is only for **${u.tag}**`;
 
 // Read env var
 setup();

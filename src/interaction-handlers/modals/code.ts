@@ -5,7 +5,7 @@ import {
 } from '@sapphire/framework';
 import { Stopwatch } from '@sapphire/stopwatch';
 import type { ModalSubmitInteraction } from 'discord.js';
-import { NodePistonClient } from 'piston-api-client';
+import { NodePistonClient, PistonExecuteResult } from 'piston-api-client';
 import { syntaxHighlight } from '../../lib/utils';
 import { pistonLangs } from '../../lib/constants';
 
@@ -34,7 +34,7 @@ export class ModalHandler extends InteractionHandler {
 
 		if (!pistonLangs.includes(language))
 			return interaction.editReply({
-				content: '❌ The language you submitted is invalid'
+				content: '❎ The language you submitted is invalid'
 			});
 
 		const piston = new NodePistonClient({ server: 'https://emkc.org' });
@@ -50,23 +50,9 @@ export class ModalHandler extends InteractionHandler {
 		});
 
 		if (result.success) {
-			if (result.data.run.output === '') {
-				return interaction.editReply({
-					content: `✅ Your code ran with no output! ${result.data.language}(${
-						result.data.version
-					}) code, took ${stopwatch.stop().toString()}`
-				});
-			}
-			return interaction.editReply({
-				content: `✅ Here is your ${result.data.language}(${
-					result.data.version
-				}) code, took ${stopwatch.stop().toString()}\n${syntaxHighlight(
-					result.data.language,
-					result.data.run.output
-				)}`
-			});
+			return this.formatOutput(interaction, result.data, stopwatch);
 		} else {
-			return interaction.editReply({ content: '❌ Something happened' });
+			return interaction.editReply({ content: '❎ Something happened' });
 		}
 	}
 
@@ -80,5 +66,38 @@ export class ModalHandler extends InteractionHandler {
 			options.code,
 			options.args
 		);
+	}
+
+	public formatOutput(
+		interaction: ModalSubmitInteraction,
+		data: PistonExecuteResult,
+		stopwatch: Stopwatch
+	) {
+		if (data.run.stderr !== '') {
+			return interaction.editReply({
+				content: `❎ Code ${data.language}(${
+					data.version
+				}) returned error output, took ${stopwatch
+					.stop()
+					.toString()}\n${syntaxHighlight('xl', data.run.stderr)}`
+			});
+		}
+
+		if (data.run.output === '') {
+			return interaction.editReply({
+				content: `❎ Your code ran with no output! ${data.language}(${
+					data.version
+				}) code, took ${stopwatch.stop().toString()}`
+			});
+		}
+
+		return interaction.editReply({
+			content: `✅ Here is your ${data.language}(${
+				data.version
+			}) output, took ${stopwatch.stop().toString()}\n${syntaxHighlight(
+				data.language,
+				data.run.output
+			)}`
+		});
 	}
 }

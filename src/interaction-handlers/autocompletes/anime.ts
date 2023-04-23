@@ -4,7 +4,7 @@ import {
 } from '@sapphire/framework';
 import type { AutocompleteInteraction } from 'discord.js';
 import { ApplyOptions } from '@sapphire/decorators';
-import { Enime } from '../../lib/structures/api/Enime';
+import { Enime } from '../../lib/structures/api/enime/Enime';
 
 @ApplyOptions<InteractionHandler.Options>({
     interactionHandlerType: InteractionHandlerTypes.Autocomplete,

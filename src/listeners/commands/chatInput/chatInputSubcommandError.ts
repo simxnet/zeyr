@@ -1,11 +1,13 @@
-import type {
-	ChatInputCommandDeniedPayload,
-	Events
-} from '@sapphire/framework';
 import { Identifiers, Listener, type UserError } from '@sapphire/framework';
+import {
+	SubcommandPluginEvents,
+	ChatInputSubcommandErrorPayload
+} from '@sapphire/plugin-subcommands';
 
-export class UserEvent extends Listener<typeof Events.ChatInputCommandDenied> {
-	public async run(error: UserError, context: ChatInputCommandDeniedPayload) {
+export class UserEvent extends Listener<
+	typeof SubcommandPluginEvents.ChatInputSubcommandError
+> {
+	public async run(error: UserError, context: ChatInputSubcommandErrorPayload) {
 		const { name, location } = context.command;
 		let errorMessage = '❎ ';
 

@@ -17,13 +17,15 @@ More FaQ soon...
 # TODO
 - [x] Optimize image manipulation commands
 - [x] Get images from embeds in `getLastMedia()`
-- [ ] Improve tag scripting ❌
+- [ ] Improve tag scripting ❎
 - [x] Finish image manipulation categories
 - [x] Add more stats on `system` category
 - [ ] Create a handler for tags 🔧
 - [x] A way to decode webp images with Imagescript
-- [ ] Setup redis 🔧
+- [ ] Setup redis
 - [ ] Migrate tag system onto slash commands 🔧
+- [ ] Finish ANIME module 🔧
+- [ ] Finish SOCIAL module 🔧
 
 🔧 = Work in progress
 
@@ -31,7 +33,7 @@ More FaQ soon...
 
 🧪 = Being tested and prepared for prod
 
-❌ = Interrumpted
+❎ = Interrumpted
 
 No emoji = Not even started
 
@@ -39,14 +41,13 @@ No emoji = Not even started
 > These features are not confirmed yet and can be **removed** in any moment!
 - [x] Tags
 - [x] Image manipulation
-- [ ] Anime searching
+- [x] Anime searching (PARTIALLY)
 - [ ] Social media notifications
 - [ ] Reminders
-- [ ] Public code executing
+- [x] Public code executing
 - [ ] Game stats
 - [ ] Public tools for developers
 
-I don't know how to call them so i made random names.
 ## Contributors ✨
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):

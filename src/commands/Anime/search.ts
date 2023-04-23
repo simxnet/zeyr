@@ -1,6 +1,6 @@
 import { Command } from '@kaname-png/plugin-subcommands-advanced';
 import { ApplyOptions } from '@sapphire/decorators';
-import { Enime } from '../../lib/structures/api/Enime';
+import { Enime } from '../../lib/structures/api/enime/Enime';
 import { ColorResolvable, EmbedBuilder } from 'discord.js';
 import { codeBlock } from '@sapphire/utilities';
 

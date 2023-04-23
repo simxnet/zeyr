@@ -1,4 +1,4 @@
-import { Anime, SearchResult } from './types';
+import { type Anime, type SearchResult } from './types';
 import { fetch, FetchResultTypes } from '@sapphire/fetch';
 
 export class Enime {

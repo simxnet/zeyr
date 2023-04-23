@@ -17,28 +17,31 @@ export class UserCommand extends Command {
 	public override async chatInputRun(
 		interaction: Command.ChatInputInteraction
 	) {
-		const modal = new ModalBuilder() //
+		const modal = new ModalBuilder()
 			.setCustomId('@tools/code')
 			.setTitle('Code to evaluate')
 			.setComponents(
 				new ActionRowBuilder<TextInputBuilder>().addComponents(
-					new TextInputBuilder() //
+					new TextInputBuilder()
 						.setCustomId('language')
-						.setLabel('Make sure you type a correct language')
+						.setLabel('Language')
+						.setPlaceholder('Please make sure you select a correct language')
 						.setRequired(true)
 						.setStyle(TextInputStyle.Short)
 				),
 				new ActionRowBuilder<TextInputBuilder>().addComponents(
-					new TextInputBuilder() //
+					new TextInputBuilder()
 						.setCustomId('code')
-						.setLabel('Code to execute')
+						.setLabel('Code')
+						.setPlaceholder('Code to run')
 						.setRequired(true)
 						.setStyle(TextInputStyle.Paragraph)
 				),
 				new ActionRowBuilder<TextInputBuilder>().addComponents(
-					new TextInputBuilder() //
+					new TextInputBuilder()
 						.setCustomId('args')
-						.setLabel('Optional args for code')
+						.setLabel('Args')
+						.setPlaceholder('(OPTIONAL) Args for code')
 						.setRequired(false)
 						.setStyle(TextInputStyle.Paragraph)
 				)

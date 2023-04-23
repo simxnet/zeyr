@@ -48,7 +48,7 @@ export class UserCommand extends Command {
 			.catch((e) => {
 				console.error(e);
 				return interaction.editReply({
-					content: `❌ Failed to get screenshot, took ${stopwatch
+					content: `❎ Failed to get screenshot, took ${stopwatch
 						.stop()
 						.toString()}`
 				});

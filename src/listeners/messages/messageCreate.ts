@@ -48,6 +48,7 @@ export class UserEvent extends Listener<typeof Events.MessageCreate> {
 			await this.container.prisma.member.create({
 				data: {
 					id: message.author.id,
+					userId: message.author.id,
 					guildId: message.guildId!
 				}
 			});
